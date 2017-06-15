@@ -27,6 +27,7 @@ namespace TuyenDung
         {
             textBox1.Text = textBox2.Text = String.Empty;
             btnOK.Text = "Thêm";
+            selID = 0;
             btnCancal.Enabled = false;
         }
 
@@ -45,10 +46,19 @@ namespace TuyenDung
         {
             using(var db = new DatabaseContext())
             {
-                DM_TINH t = new DM_TINH();
-                t.MA_TINH = textBox1.Text;
-                t.TEN_TINH = textBox2.Text;
-                db.DM_TINH.Add(t);
+                if(selID==0)
+                {
+                    DM_TINH t = new DM_TINH();
+                    t.MA_TINH = textBox1.Text;
+                    t.TEN_TINH = textBox2.Text;
+                    db.DM_TINH.Add(t);
+                }
+                else
+                {
+                    DM_TINH t = db.DM_TINH.FirstOrDefault(n => n.ID_TINH == selID);
+                    t.MA_TINH = textBox1.Text;
+                    t.TEN_TINH = textBox2.Text;
+                }
 
                 if(db.SaveChanges()>0)
                 {
@@ -69,7 +79,11 @@ namespace TuyenDung
                 return;
 
             selID = (int)dataGridView1.SelectedRows[0].Cells["Column1"].Value;
-
+            textBox1.Text = dataGridView1.SelectedRows[0].Cells["Column2"].Value.ToString();
+            textBox2.Text = dataGridView1.SelectedRows[0].Cells["Column3"].Value.ToString();
+            btnOK.Text = "Cập nhật";
+            btnCancal.Enabled = true;
         }
+
     }
 }
