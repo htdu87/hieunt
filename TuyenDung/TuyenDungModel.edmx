@@ -1,0 +1,526 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="tuyendungModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DM_NGANH_NGHE">
+          <Key>
+            <PropertyRef Name="ID_NGANH_NGHE" />
+          </Key>
+          <Property Name="ID_NGANH_NGHE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MA_NGANH_NGHE" Type="int" Nullable="false" />
+          <Property Name="TEN_NGANH_NGHE" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DM_NGANH_NGHE_NGUON">
+          <Key>
+            <PropertyRef Name="ID_NGANH_NGHE_NGUON" />
+          </Key>
+          <Property Name="ID_NGANH_NGHE_NGUON" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MA_NGANH_NGHE" Type="int" Nullable="false" />
+          <Property Name="TEN_NGANH_NGHE" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ID_NGUON" Type="int" Nullable="false" />
+          <Property Name="ID_NGANH_NGHE" Type="int" />
+        </EntityType>
+        <EntityType Name="DM_TINH">
+          <Key>
+            <PropertyRef Name="ID_TINH" />
+          </Key>
+          <Property Name="ID_TINH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MA_TINH" Type="int" Nullable="false" />
+          <Property Name="TEN_TINH" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DM_TINH_NGUON">
+          <Key>
+            <PropertyRef Name="ID_TINH_NGUON" />
+          </Key>
+          <Property Name="ID_TINH_NGUON" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MA_TINH" Type="int" Nullable="false" />
+          <Property Name="TEN_TINH" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ID_NGUON" Type="int" Nullable="false" />
+          <Property Name="ID_TINH" Type="int" />
+        </EntityType>
+        <EntityType Name="NGUON">
+          <Key>
+            <PropertyRef Name="ID_NGUON" />
+          </Key>
+          <Property Name="ID_NGUON" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TEN_NGUON" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TUYEN_DUNG">
+          <Key>
+            <PropertyRef Name="ID_TUYEN_DUNG" />
+          </Key>
+          <Property Name="ID_TUYEN_DUNG" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MA_TUYEN_DUNG" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="VI_TRI" Type="nvarchar" MaxLength="200" />
+          <Property Name="MUC_LUONG" Type="nvarchar" MaxLength="50" />
+          <Property Name="KHU_VUC" Type="nvarchar" MaxLength="200" />
+          <Property Name="HAN_NOP" Type="nvarchar" MaxLength="50" />
+          <Property Name="URL" Type="nvarchar" MaxLength="200" />
+          <Property Name="LUU" Type="bit" Nullable="false" />
+          <Property Name="NGAY_LAY" Type="datetime" Nullable="false" />
+          <Property Name="ID_NGUON" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TUYEN_DUNG_NGANH_NGHE">
+          <Key>
+            <PropertyRef Name="ID_TUYEN_DUNG" />
+            <PropertyRef Name="ID_NGANH_NGHE" />
+          </Key>
+          <Property Name="ID_TUYEN_DUNG" Type="int" Nullable="false" />
+          <Property Name="ID_NGANH_NGHE" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TUYEN_DUNG_TINH">
+          <Key>
+            <PropertyRef Name="ID_TUYEN_DUNG" />
+            <PropertyRef Name="ID_TINH" />
+          </Key>
+          <Property Name="ID_TUYEN_DUNG" Type="int" Nullable="false" />
+          <Property Name="ID_TINH" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_DM_NGANH_NGHE_NGUON_DM_NGANH_NGHE">
+          <End Role="DM_NGANH_NGHE" Type="Self.DM_NGANH_NGHE" Multiplicity="0..1" />
+          <End Role="DM_NGANH_NGHE_NGUON" Type="Self.DM_NGANH_NGHE_NGUON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DM_NGANH_NGHE">
+              <PropertyRef Name="ID_NGANH_NGHE" />
+            </Principal>
+            <Dependent Role="DM_NGANH_NGHE_NGUON">
+              <PropertyRef Name="ID_NGANH_NGHE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DM_NGANH_NGHE_NGUON_NGUON">
+          <End Role="NGUON" Type="Self.NGUON" Multiplicity="1" />
+          <End Role="DM_NGANH_NGHE_NGUON" Type="Self.DM_NGANH_NGHE_NGUON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NGUON">
+              <PropertyRef Name="ID_NGUON" />
+            </Principal>
+            <Dependent Role="DM_NGANH_NGHE_NGUON">
+              <PropertyRef Name="ID_NGUON" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DM_TINH_NGUON_DM_TINH">
+          <End Role="DM_TINH" Type="Self.DM_TINH" Multiplicity="0..1" />
+          <End Role="DM_TINH_NGUON" Type="Self.DM_TINH_NGUON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DM_TINH">
+              <PropertyRef Name="ID_TINH" />
+            </Principal>
+            <Dependent Role="DM_TINH_NGUON">
+              <PropertyRef Name="ID_TINH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DM_TINH_NGUON_NGUON">
+          <End Role="NGUON" Type="Self.NGUON" Multiplicity="1" />
+          <End Role="DM_TINH_NGUON" Type="Self.DM_TINH_NGUON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NGUON">
+              <PropertyRef Name="ID_NGUON" />
+            </Principal>
+            <Dependent Role="DM_TINH_NGUON">
+              <PropertyRef Name="ID_NGUON" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TUYEN_DUNG_NGANH_NGHE_NGANH_NGHE_NGUON">
+          <End Role="DM_NGANH_NGHE_NGUON" Type="Self.DM_NGANH_NGHE_NGUON" Multiplicity="1" />
+          <End Role="TUYEN_DUNG_NGANH_NGHE" Type="Self.TUYEN_DUNG_NGANH_NGHE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DM_NGANH_NGHE_NGUON">
+              <PropertyRef Name="ID_NGANH_NGHE_NGUON" />
+            </Principal>
+            <Dependent Role="TUYEN_DUNG_NGANH_NGHE">
+              <PropertyRef Name="ID_NGANH_NGHE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TUYEN_DUNG_NGANH_NGHE_TUYEN_DUNG">
+          <End Role="TUYEN_DUNG" Type="Self.TUYEN_DUNG" Multiplicity="1" />
+          <End Role="TUYEN_DUNG_NGANH_NGHE" Type="Self.TUYEN_DUNG_NGANH_NGHE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TUYEN_DUNG">
+              <PropertyRef Name="ID_TUYEN_DUNG" />
+            </Principal>
+            <Dependent Role="TUYEN_DUNG_NGANH_NGHE">
+              <PropertyRef Name="ID_TUYEN_DUNG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TUYEN_DUNG_NGUON">
+          <End Role="NGUON" Type="Self.NGUON" Multiplicity="1" />
+          <End Role="TUYEN_DUNG" Type="Self.TUYEN_DUNG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NGUON">
+              <PropertyRef Name="ID_NGUON" />
+            </Principal>
+            <Dependent Role="TUYEN_DUNG">
+              <PropertyRef Name="ID_NGUON" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TUYEN_DUNG_TINH_DM_TINH_NGUON">
+          <End Role="DM_TINH_NGUON" Type="Self.DM_TINH_NGUON" Multiplicity="1" />
+          <End Role="TUYEN_DUNG_TINH" Type="Self.TUYEN_DUNG_TINH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DM_TINH_NGUON">
+              <PropertyRef Name="ID_TINH_NGUON" />
+            </Principal>
+            <Dependent Role="TUYEN_DUNG_TINH">
+              <PropertyRef Name="ID_TINH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TUYEN_DUNG_TINH_TUYEN_DUNG">
+          <End Role="TUYEN_DUNG" Type="Self.TUYEN_DUNG" Multiplicity="1" />
+          <End Role="TUYEN_DUNG_TINH" Type="Self.TUYEN_DUNG_TINH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TUYEN_DUNG">
+              <PropertyRef Name="ID_TUYEN_DUNG" />
+            </Principal>
+            <Dependent Role="TUYEN_DUNG_TINH">
+              <PropertyRef Name="ID_TUYEN_DUNG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="tuyendungModelStoreContainer">
+          <EntitySet Name="DM_NGANH_NGHE" EntityType="Self.DM_NGANH_NGHE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DM_NGANH_NGHE_NGUON" EntityType="Self.DM_NGANH_NGHE_NGUON" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DM_TINH" EntityType="Self.DM_TINH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DM_TINH_NGUON" EntityType="Self.DM_TINH_NGUON" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NGUON" EntityType="Self.NGUON" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TUYEN_DUNG" EntityType="Self.TUYEN_DUNG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TUYEN_DUNG_NGANH_NGHE" EntityType="Self.TUYEN_DUNG_NGANH_NGHE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TUYEN_DUNG_TINH" EntityType="Self.TUYEN_DUNG_TINH" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_DM_NGANH_NGHE_NGUON_DM_NGANH_NGHE" Association="Self.FK_DM_NGANH_NGHE_NGUON_DM_NGANH_NGHE">
+            <End Role="DM_NGANH_NGHE" EntitySet="DM_NGANH_NGHE" />
+            <End Role="DM_NGANH_NGHE_NGUON" EntitySet="DM_NGANH_NGHE_NGUON" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DM_NGANH_NGHE_NGUON_NGUON" Association="Self.FK_DM_NGANH_NGHE_NGUON_NGUON">
+            <End Role="NGUON" EntitySet="NGUON" />
+            <End Role="DM_NGANH_NGHE_NGUON" EntitySet="DM_NGANH_NGHE_NGUON" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DM_TINH_NGUON_DM_TINH" Association="Self.FK_DM_TINH_NGUON_DM_TINH">
+            <End Role="DM_TINH" EntitySet="DM_TINH" />
+            <End Role="DM_TINH_NGUON" EntitySet="DM_TINH_NGUON" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DM_TINH_NGUON_NGUON" Association="Self.FK_DM_TINH_NGUON_NGUON">
+            <End Role="NGUON" EntitySet="NGUON" />
+            <End Role="DM_TINH_NGUON" EntitySet="DM_TINH_NGUON" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TUYEN_DUNG_NGANH_NGHE_NGANH_NGHE_NGUON" Association="Self.FK_TUYEN_DUNG_NGANH_NGHE_NGANH_NGHE_NGUON">
+            <End Role="DM_NGANH_NGHE_NGUON" EntitySet="DM_NGANH_NGHE_NGUON" />
+            <End Role="TUYEN_DUNG_NGANH_NGHE" EntitySet="TUYEN_DUNG_NGANH_NGHE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TUYEN_DUNG_NGANH_NGHE_TUYEN_DUNG" Association="Self.FK_TUYEN_DUNG_NGANH_NGHE_TUYEN_DUNG">
+            <End Role="TUYEN_DUNG" EntitySet="TUYEN_DUNG" />
+            <End Role="TUYEN_DUNG_NGANH_NGHE" EntitySet="TUYEN_DUNG_NGANH_NGHE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TUYEN_DUNG_NGUON" Association="Self.FK_TUYEN_DUNG_NGUON">
+            <End Role="NGUON" EntitySet="NGUON" />
+            <End Role="TUYEN_DUNG" EntitySet="TUYEN_DUNG" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TUYEN_DUNG_TINH_DM_TINH_NGUON" Association="Self.FK_TUYEN_DUNG_TINH_DM_TINH_NGUON">
+            <End Role="DM_TINH_NGUON" EntitySet="DM_TINH_NGUON" />
+            <End Role="TUYEN_DUNG_TINH" EntitySet="TUYEN_DUNG_TINH" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TUYEN_DUNG_TINH_TUYEN_DUNG" Association="Self.FK_TUYEN_DUNG_TINH_TUYEN_DUNG">
+            <End Role="TUYEN_DUNG" EntitySet="TUYEN_DUNG" />
+            <End Role="TUYEN_DUNG_TINH" EntitySet="TUYEN_DUNG_TINH" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="tuyendungModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DM_NGANH_NGHE">
+          <Key>
+            <PropertyRef Name="ID_NGANH_NGHE" />
+          </Key>
+          <Property Name="ID_NGANH_NGHE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MA_NGANH_NGHE" Type="Int32" Nullable="false" />
+          <Property Name="TEN_NGANH_NGHE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="DM_NGANH_NGHE_NGUON" Relationship="Self.FK_DM_NGANH_NGHE_NGUON_DM_NGANH_NGHE" FromRole="DM_NGANH_NGHE" ToRole="DM_NGANH_NGHE_NGUON" />
+        </EntityType>
+        <EntityType Name="DM_NGANH_NGHE_NGUON">
+          <Key>
+            <PropertyRef Name="ID_NGANH_NGHE_NGUON" />
+          </Key>
+          <Property Name="ID_NGANH_NGHE_NGUON" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MA_NGANH_NGHE" Type="Int32" Nullable="false" />
+          <Property Name="TEN_NGANH_NGHE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_NGUON" Type="Int32" Nullable="false" />
+          <Property Name="ID_NGANH_NGHE" Type="Int32" />
+          <NavigationProperty Name="DM_NGANH_NGHE" Relationship="Self.FK_DM_NGANH_NGHE_NGUON_DM_NGANH_NGHE" FromRole="DM_NGANH_NGHE_NGUON" ToRole="DM_NGANH_NGHE" />
+          <NavigationProperty Name="NGUON" Relationship="Self.FK_DM_NGANH_NGHE_NGUON_NGUON" FromRole="DM_NGANH_NGHE_NGUON" ToRole="NGUON" />
+          <NavigationProperty Name="TUYEN_DUNG" Relationship="Self.TUYEN_DUNG_NGANH_NGHE" FromRole="DM_NGANH_NGHE_NGUON" ToRole="TUYEN_DUNG" />
+        </EntityType>
+        <EntityType Name="DM_TINH">
+          <Key>
+            <PropertyRef Name="ID_TINH" />
+          </Key>
+          <Property Name="ID_TINH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MA_TINH" Type="Int32" Nullable="false" />
+          <Property Name="TEN_TINH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="DM_TINH_NGUON" Relationship="Self.FK_DM_TINH_NGUON_DM_TINH" FromRole="DM_TINH" ToRole="DM_TINH_NGUON" />
+        </EntityType>
+        <EntityType Name="DM_TINH_NGUON">
+          <Key>
+            <PropertyRef Name="ID_TINH_NGUON" />
+          </Key>
+          <Property Name="ID_TINH_NGUON" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MA_TINH" Type="Int32" Nullable="false" />
+          <Property Name="TEN_TINH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_NGUON" Type="Int32" Nullable="false" />
+          <Property Name="ID_TINH" Type="Int32" />
+          <NavigationProperty Name="DM_TINH" Relationship="Self.FK_DM_TINH_NGUON_DM_TINH" FromRole="DM_TINH_NGUON" ToRole="DM_TINH" />
+          <NavigationProperty Name="NGUON" Relationship="Self.FK_DM_TINH_NGUON_NGUON" FromRole="DM_TINH_NGUON" ToRole="NGUON" />
+          <NavigationProperty Name="TUYEN_DUNG" Relationship="Self.TUYEN_DUNG_TINH" FromRole="DM_TINH_NGUON" ToRole="TUYEN_DUNG" />
+        </EntityType>
+        <EntityType Name="NGUON">
+          <Key>
+            <PropertyRef Name="ID_NGUON" />
+          </Key>
+          <Property Name="ID_NGUON" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TEN_NGUON" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="DM_NGANH_NGHE_NGUON" Relationship="Self.FK_DM_NGANH_NGHE_NGUON_NGUON" FromRole="NGUON" ToRole="DM_NGANH_NGHE_NGUON" />
+          <NavigationProperty Name="DM_TINH_NGUON" Relationship="Self.FK_DM_TINH_NGUON_NGUON" FromRole="NGUON" ToRole="DM_TINH_NGUON" />
+          <NavigationProperty Name="TUYEN_DUNG" Relationship="Self.FK_TUYEN_DUNG_NGUON" FromRole="NGUON" ToRole="TUYEN_DUNG" />
+        </EntityType>
+        <EntityType Name="TUYEN_DUNG">
+          <Key>
+            <PropertyRef Name="ID_TUYEN_DUNG" />
+          </Key>
+          <Property Name="ID_TUYEN_DUNG" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MA_TUYEN_DUNG" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VI_TRI" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="MUC_LUONG" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KHU_VUC" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="HAN_NOP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="URL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="LUU" Type="Boolean" Nullable="false" />
+          <Property Name="NGAY_LAY" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ID_NGUON" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="NGUON" Relationship="Self.FK_TUYEN_DUNG_NGUON" FromRole="TUYEN_DUNG" ToRole="NGUON" />
+          <NavigationProperty Name="DM_NGANH_NGHE_NGUON" Relationship="Self.TUYEN_DUNG_NGANH_NGHE" FromRole="TUYEN_DUNG" ToRole="DM_NGANH_NGHE_NGUON" />
+          <NavigationProperty Name="DM_TINH_NGUON" Relationship="Self.TUYEN_DUNG_TINH" FromRole="TUYEN_DUNG" ToRole="DM_TINH_NGUON" />
+        </EntityType>
+        <Association Name="FK_DM_NGANH_NGHE_NGUON_DM_NGANH_NGHE">
+          <End Role="DM_NGANH_NGHE" Type="Self.DM_NGANH_NGHE" Multiplicity="0..1" />
+          <End Role="DM_NGANH_NGHE_NGUON" Type="Self.DM_NGANH_NGHE_NGUON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DM_NGANH_NGHE">
+              <PropertyRef Name="ID_NGANH_NGHE" />
+            </Principal>
+            <Dependent Role="DM_NGANH_NGHE_NGUON">
+              <PropertyRef Name="ID_NGANH_NGHE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DM_NGANH_NGHE_NGUON_NGUON">
+          <End Role="NGUON" Type="Self.NGUON" Multiplicity="1" />
+          <End Role="DM_NGANH_NGHE_NGUON" Type="Self.DM_NGANH_NGHE_NGUON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NGUON">
+              <PropertyRef Name="ID_NGUON" />
+            </Principal>
+            <Dependent Role="DM_NGANH_NGHE_NGUON">
+              <PropertyRef Name="ID_NGUON" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DM_TINH_NGUON_DM_TINH">
+          <End Role="DM_TINH" Type="Self.DM_TINH" Multiplicity="0..1" />
+          <End Role="DM_TINH_NGUON" Type="Self.DM_TINH_NGUON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DM_TINH">
+              <PropertyRef Name="ID_TINH" />
+            </Principal>
+            <Dependent Role="DM_TINH_NGUON">
+              <PropertyRef Name="ID_TINH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DM_TINH_NGUON_NGUON">
+          <End Role="NGUON" Type="Self.NGUON" Multiplicity="1" />
+          <End Role="DM_TINH_NGUON" Type="Self.DM_TINH_NGUON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NGUON">
+              <PropertyRef Name="ID_NGUON" />
+            </Principal>
+            <Dependent Role="DM_TINH_NGUON">
+              <PropertyRef Name="ID_NGUON" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TUYEN_DUNG_NGUON">
+          <End Role="NGUON" Type="Self.NGUON" Multiplicity="1" />
+          <End Role="TUYEN_DUNG" Type="Self.TUYEN_DUNG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NGUON">
+              <PropertyRef Name="ID_NGUON" />
+            </Principal>
+            <Dependent Role="TUYEN_DUNG">
+              <PropertyRef Name="ID_NGUON" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TUYEN_DUNG_NGANH_NGHE">
+          <End Role="DM_NGANH_NGHE_NGUON" Type="Self.DM_NGANH_NGHE_NGUON" Multiplicity="*" />
+          <End Role="TUYEN_DUNG" Type="Self.TUYEN_DUNG" Multiplicity="*" />
+        </Association>
+        <Association Name="TUYEN_DUNG_TINH">
+          <End Role="DM_TINH_NGUON" Type="Self.DM_TINH_NGUON" Multiplicity="*" />
+          <End Role="TUYEN_DUNG" Type="Self.TUYEN_DUNG" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="TuyenDungContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DM_NGANH_NGHE" EntityType="Self.DM_NGANH_NGHE" />
+          <EntitySet Name="DM_NGANH_NGHE_NGUON" EntityType="Self.DM_NGANH_NGHE_NGUON" />
+          <EntitySet Name="DM_TINH" EntityType="Self.DM_TINH" />
+          <EntitySet Name="DM_TINH_NGUON" EntityType="Self.DM_TINH_NGUON" />
+          <EntitySet Name="NGUONs" EntityType="Self.NGUON" />
+          <EntitySet Name="TUYEN_DUNG" EntityType="Self.TUYEN_DUNG" />
+          <AssociationSet Name="FK_DM_NGANH_NGHE_NGUON_DM_NGANH_NGHE" Association="Self.FK_DM_NGANH_NGHE_NGUON_DM_NGANH_NGHE">
+            <End Role="DM_NGANH_NGHE" EntitySet="DM_NGANH_NGHE" />
+            <End Role="DM_NGANH_NGHE_NGUON" EntitySet="DM_NGANH_NGHE_NGUON" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DM_NGANH_NGHE_NGUON_NGUON" Association="Self.FK_DM_NGANH_NGHE_NGUON_NGUON">
+            <End Role="NGUON" EntitySet="NGUONs" />
+            <End Role="DM_NGANH_NGHE_NGUON" EntitySet="DM_NGANH_NGHE_NGUON" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DM_TINH_NGUON_DM_TINH" Association="Self.FK_DM_TINH_NGUON_DM_TINH">
+            <End Role="DM_TINH" EntitySet="DM_TINH" />
+            <End Role="DM_TINH_NGUON" EntitySet="DM_TINH_NGUON" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DM_TINH_NGUON_NGUON" Association="Self.FK_DM_TINH_NGUON_NGUON">
+            <End Role="NGUON" EntitySet="NGUONs" />
+            <End Role="DM_TINH_NGUON" EntitySet="DM_TINH_NGUON" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TUYEN_DUNG_NGUON" Association="Self.FK_TUYEN_DUNG_NGUON">
+            <End Role="NGUON" EntitySet="NGUONs" />
+            <End Role="TUYEN_DUNG" EntitySet="TUYEN_DUNG" />
+          </AssociationSet>
+          <AssociationSet Name="TUYEN_DUNG_NGANH_NGHE" Association="Self.TUYEN_DUNG_NGANH_NGHE">
+            <End Role="DM_NGANH_NGHE_NGUON" EntitySet="DM_NGANH_NGHE_NGUON" />
+            <End Role="TUYEN_DUNG" EntitySet="TUYEN_DUNG" />
+          </AssociationSet>
+          <AssociationSet Name="TUYEN_DUNG_TINH" Association="Self.TUYEN_DUNG_TINH">
+            <End Role="DM_TINH_NGUON" EntitySet="DM_TINH_NGUON" />
+            <End Role="TUYEN_DUNG" EntitySet="TUYEN_DUNG" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="tuyendungModelStoreContainer" CdmEntityContainer="TuyenDungContext">
+          <EntitySetMapping Name="DM_NGANH_NGHE">
+            <EntityTypeMapping TypeName="tuyendungModel.DM_NGANH_NGHE">
+              <MappingFragment StoreEntitySet="DM_NGANH_NGHE">
+                <ScalarProperty Name="ID_NGANH_NGHE" ColumnName="ID_NGANH_NGHE" />
+                <ScalarProperty Name="MA_NGANH_NGHE" ColumnName="MA_NGANH_NGHE" />
+                <ScalarProperty Name="TEN_NGANH_NGHE" ColumnName="TEN_NGANH_NGHE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DM_NGANH_NGHE_NGUON">
+            <EntityTypeMapping TypeName="tuyendungModel.DM_NGANH_NGHE_NGUON">
+              <MappingFragment StoreEntitySet="DM_NGANH_NGHE_NGUON">
+                <ScalarProperty Name="ID_NGANH_NGHE_NGUON" ColumnName="ID_NGANH_NGHE_NGUON" />
+                <ScalarProperty Name="MA_NGANH_NGHE" ColumnName="MA_NGANH_NGHE" />
+                <ScalarProperty Name="TEN_NGANH_NGHE" ColumnName="TEN_NGANH_NGHE" />
+                <ScalarProperty Name="ID_NGUON" ColumnName="ID_NGUON" />
+                <ScalarProperty Name="ID_NGANH_NGHE" ColumnName="ID_NGANH_NGHE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DM_TINH">
+            <EntityTypeMapping TypeName="tuyendungModel.DM_TINH">
+              <MappingFragment StoreEntitySet="DM_TINH">
+                <ScalarProperty Name="ID_TINH" ColumnName="ID_TINH" />
+                <ScalarProperty Name="MA_TINH" ColumnName="MA_TINH" />
+                <ScalarProperty Name="TEN_TINH" ColumnName="TEN_TINH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DM_TINH_NGUON">
+            <EntityTypeMapping TypeName="tuyendungModel.DM_TINH_NGUON">
+              <MappingFragment StoreEntitySet="DM_TINH_NGUON">
+                <ScalarProperty Name="ID_TINH_NGUON" ColumnName="ID_TINH_NGUON" />
+                <ScalarProperty Name="MA_TINH" ColumnName="MA_TINH" />
+                <ScalarProperty Name="TEN_TINH" ColumnName="TEN_TINH" />
+                <ScalarProperty Name="ID_NGUON" ColumnName="ID_NGUON" />
+                <ScalarProperty Name="ID_TINH" ColumnName="ID_TINH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NGUONs">
+            <EntityTypeMapping TypeName="tuyendungModel.NGUON">
+              <MappingFragment StoreEntitySet="NGUON">
+                <ScalarProperty Name="ID_NGUON" ColumnName="ID_NGUON" />
+                <ScalarProperty Name="TEN_NGUON" ColumnName="TEN_NGUON" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TUYEN_DUNG">
+            <EntityTypeMapping TypeName="tuyendungModel.TUYEN_DUNG">
+              <MappingFragment StoreEntitySet="TUYEN_DUNG">
+                <ScalarProperty Name="ID_TUYEN_DUNG" ColumnName="ID_TUYEN_DUNG" />
+                <ScalarProperty Name="MA_TUYEN_DUNG" ColumnName="MA_TUYEN_DUNG" />
+                <ScalarProperty Name="VI_TRI" ColumnName="VI_TRI" />
+                <ScalarProperty Name="MUC_LUONG" ColumnName="MUC_LUONG" />
+                <ScalarProperty Name="KHU_VUC" ColumnName="KHU_VUC" />
+                <ScalarProperty Name="HAN_NOP" ColumnName="HAN_NOP" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="LUU" ColumnName="LUU" />
+                <ScalarProperty Name="NGAY_LAY" ColumnName="NGAY_LAY" />
+                <ScalarProperty Name="ID_NGUON" ColumnName="ID_NGUON" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="TUYEN_DUNG_NGANH_NGHE" TypeName="tuyendungModel.TUYEN_DUNG_NGANH_NGHE" StoreEntitySet="TUYEN_DUNG_NGANH_NGHE">
+            <EndProperty Name="DM_NGANH_NGHE_NGUON">
+              <ScalarProperty Name="ID_NGANH_NGHE_NGUON" ColumnName="ID_NGANH_NGHE" />
+            </EndProperty>
+            <EndProperty Name="TUYEN_DUNG">
+              <ScalarProperty Name="ID_TUYEN_DUNG" ColumnName="ID_TUYEN_DUNG" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="TUYEN_DUNG_TINH" TypeName="tuyendungModel.TUYEN_DUNG_TINH" StoreEntitySet="TUYEN_DUNG_TINH">
+            <EndProperty Name="DM_TINH_NGUON">
+              <ScalarProperty Name="ID_TINH_NGUON" ColumnName="ID_TINH" />
+            </EndProperty>
+            <EndProperty Name="TUYEN_DUNG">
+              <ScalarProperty Name="ID_TUYEN_DUNG" ColumnName="ID_TUYEN_DUNG" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

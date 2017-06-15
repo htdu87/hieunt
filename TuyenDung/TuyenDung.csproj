@@ -32,8 +32,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,14 +53,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DM_NGANH_NGHE.cs">
+      <DependentUpon>TuyenDungModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DM_NGANH_NGHE_NGUON.cs">
+      <DependentUpon>TuyenDungModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DM_TINH.cs">
+      <DependentUpon>TuyenDungModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DM_TINH_NGUON.cs">
+      <DependentUpon>TuyenDungModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="NGUON.cs">
+      <DependentUpon>TuyenDungModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TuyenDungModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TuyenDungModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TuyenDungModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TuyenDungModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TuyenDungModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TuyenDungModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="TUYEN_DUNG.cs">
+      <DependentUpon>TuyenDungModel.tt</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -64,6 +106,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -73,9 +116,29 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EntityDeploy Include="TuyenDungModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TuyenDungModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="TuyenDungModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TuyenDungModel.edmx</DependentUpon>
+      <LastGenOutput>TuyenDungModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="TuyenDungModel.edmx.diagram">
+      <DependentUpon>TuyenDungModel.edmx</DependentUpon>
+    </None>
+    <None Include="TuyenDungModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TuyenDungModel.edmx</DependentUpon>
+      <LastGenOutput>TuyenDungModel.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
