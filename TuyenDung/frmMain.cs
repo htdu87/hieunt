@@ -21,5 +21,10 @@ namespace TuyenDung
         {
             new frmNguonTin().Show();
         }
+
+        private void dmTinhThanh_Click(object sender, EventArgs e)
+        {
+            new frmTinhThanh().Show();
+        }
     }
 }
