@@ -13,10 +13,10 @@ namespace TuyenDung
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class TuyenDungContext : DbContext
+    public partial class DatabaseContext : DbContext
     {
-        public TuyenDungContext()
-            : base("name=TuyenDungContext")
+        public DatabaseContext()
+            : base("name=DatabaseContext")
         {
         }
     

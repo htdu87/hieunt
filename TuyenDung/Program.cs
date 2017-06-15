@@ -8,6 +8,7 @@ namespace TuyenDung
 {
     static class Program
     {
+        public static frmMain frm;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -16,7 +17,8 @@ namespace TuyenDung
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain());
+            frm = new frmMain();
+            Application.Run(frm);
         }
     }
 }

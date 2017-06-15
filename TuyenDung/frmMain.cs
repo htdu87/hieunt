@@ -16,5 +16,10 @@ namespace TuyenDung
         {
             InitializeComponent();
         }
+
+        private void dmNguonTin_Click(object sender, EventArgs e)
+        {
+            new frmNguonTin().Show();
+        }
     }
 }

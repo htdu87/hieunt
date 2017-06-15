@@ -34,7 +34,7 @@
             this.tinTuyểnDụngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.thoátToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.danhMụcNguồnTinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dmNguonTin = new System.Windows.Forms.ToolStripMenuItem();
             this.danhMụcTỉnhThànhToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.danhMụcNgànhNghềToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
@@ -76,7 +76,7 @@
             // danhMụcToolStripMenuItem
             // 
             this.danhMụcToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.danhMụcNguồnTinToolStripMenuItem,
+            this.dmNguonTin,
             this.toolStripMenuItem3,
             this.danhMụcTỉnhThànhToolStripMenuItem,
             this.danhMụcNgànhNghềToolStripMenuItem,
@@ -107,11 +107,12 @@
             this.thoátToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.thoátToolStripMenuItem.Text = "Thoát";
             // 
-            // danhMụcNguồnTinToolStripMenuItem
+            // dmNguonTin
             // 
-            this.danhMụcNguồnTinToolStripMenuItem.Name = "danhMụcNguồnTinToolStripMenuItem";
-            this.danhMụcNguồnTinToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
-            this.danhMụcNguồnTinToolStripMenuItem.Text = "Danh mục nguồn tin";
+            this.dmNguonTin.Name = "dmNguonTin";
+            this.dmNguonTin.Size = new System.Drawing.Size(242, 22);
+            this.dmNguonTin.Text = "Danh mục nguồn tin";
+            this.dmNguonTin.Click += new System.EventHandler(this.dmNguonTin_Click);
             // 
             // danhMụcTỉnhThànhToolStripMenuItem
             // 
@@ -214,7 +215,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem thoátToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem danhMụcToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem danhMụcNguồnTinToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dmNguonTin;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem danhMụcTỉnhThànhToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem danhMụcNgànhNghềToolStripMenuItem;

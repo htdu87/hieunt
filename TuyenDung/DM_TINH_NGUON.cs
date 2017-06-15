@@ -14,19 +14,13 @@ namespace TuyenDung
     
     public partial class DM_TINH_NGUON
     {
-        public DM_TINH_NGUON()
-        {
-            this.TUYEN_DUNG = new HashSet<TUYEN_DUNG>();
-        }
-    
         public int ID_TINH_NGUON { get; set; }
-        public int MA_TINH { get; set; }
+        public string MA_TINH { get; set; }
         public string TEN_TINH { get; set; }
         public int ID_NGUON { get; set; }
         public Nullable<int> ID_TINH { get; set; }
     
         public virtual DM_TINH DM_TINH { get; set; }
         public virtual NGUON NGUON { get; set; }
-        public virtual ICollection<TUYEN_DUNG> TUYEN_DUNG { get; set; }
     }
 }

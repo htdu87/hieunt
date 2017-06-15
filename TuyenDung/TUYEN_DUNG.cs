@@ -14,12 +14,6 @@ namespace TuyenDung
     
     public partial class TUYEN_DUNG
     {
-        public TUYEN_DUNG()
-        {
-            this.DM_NGANH_NGHE_NGUON = new HashSet<DM_NGANH_NGHE_NGUON>();
-            this.DM_TINH_NGUON = new HashSet<DM_TINH_NGUON>();
-        }
-    
         public int ID_TUYEN_DUNG { get; set; }
         public string MA_TUYEN_DUNG { get; set; }
         public string VI_TRI { get; set; }
@@ -32,7 +26,5 @@ namespace TuyenDung
         public int ID_NGUON { get; set; }
     
         public virtual NGUON NGUON { get; set; }
-        public virtual ICollection<DM_NGANH_NGHE_NGUON> DM_NGANH_NGHE_NGUON { get; set; }
-        public virtual ICollection<DM_TINH_NGUON> DM_TINH_NGUON { get; set; }
     }
 }

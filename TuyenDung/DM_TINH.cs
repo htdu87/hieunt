@@ -20,7 +20,7 @@ namespace TuyenDung
         }
     
         public int ID_TINH { get; set; }
-        public int MA_TINH { get; set; }
+        public string MA_TINH { get; set; }
         public string TEN_TINH { get; set; }
     
         public virtual ICollection<DM_TINH_NGUON> DM_TINH_NGUON { get; set; }
