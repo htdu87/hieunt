@@ -145,5 +145,15 @@ namespace Robot
 
             return base.ProcessCmdKey(ref msg, keyData);
         }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            string url = dataGridView1.SelectedRows[0].Cells["colUrl"].Value.ToString();
+            if (new frmDetail(url).ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+
+            }
+        }
     }
 }

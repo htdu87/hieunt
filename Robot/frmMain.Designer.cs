@@ -29,8 +29,14 @@
         private void InitializeComponent()
         {
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnStart = new System.Windows.Forms.ToolStripButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.cmbTinh = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.progBar = new System.Windows.Forms.ToolStripProgressBar();
+            this.btnStart = new System.Windows.Forms.ToolStripButton();
             this.colIdRec = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,12 +44,7 @@
             this.colPlace = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colExpiry = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSave = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.cmbTinh = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
-            this.progBar = new System.Windows.Forms.ToolStripProgressBar();
+            this.colUrl = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -62,16 +63,6 @@
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // btnStart
-            // 
-            this.btnStart.Enabled = false;
-            this.btnStart.Image = global::Robot.Properties.Resources.ic_resultset_next;
-            this.btnStart.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(51, 22);
-            this.btnStart.Text = "Start";
-            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
-            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
@@ -86,7 +77,8 @@
             this.colSalary,
             this.colPlace,
             this.colExpiry,
-            this.colSave});
+            this.colSave,
+            this.colUrl});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 25);
             this.dataGridView1.MultiSelect = false;
@@ -97,6 +89,61 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(778, 409);
             this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            // 
+            // cmbTinh
+            // 
+            this.cmbTinh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTinh.Name = "cmbTinh";
+            this.cmbTinh.Size = new System.Drawing.Size(121, 25);
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(17, 22);
+            this.toolStripLabel1.Text = "P:";
+            this.toolStripLabel1.ToolTipText = "Province";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblStatus,
+            this.progBar});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 434);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(778, 22);
+            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(39, 17);
+            this.lblStatus.Text = "Ready";
+            // 
+            // progBar
+            // 
+            this.progBar.Maximum = 15;
+            this.progBar.Name = "progBar";
+            this.progBar.Size = new System.Drawing.Size(100, 16);
+            this.progBar.Step = 1;
+            this.progBar.Visible = false;
+            // 
+            // btnStart
+            // 
+            this.btnStart.Enabled = false;
+            this.btnStart.Image = global::Robot.Properties.Resources.ic_resultset_next;
+            this.btnStart.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(51, 22);
+            this.btnStart.Text = "Start";
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // colIdRec
             // 
@@ -152,48 +199,13 @@
             this.colSave.Name = "colSave";
             this.colSave.ReadOnly = true;
             // 
-            // cmbTinh
+            // colUrl
             // 
-            this.cmbTinh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTinh.Name = "cmbTinh";
-            this.cmbTinh.Size = new System.Drawing.Size(121, 25);
-            // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(17, 22);
-            this.toolStripLabel1.Text = "P:";
-            this.toolStripLabel1.ToolTipText = "Province";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblStatus,
-            this.progBar});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 434);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(778, 22);
-            this.statusStrip1.TabIndex = 2;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // lblStatus
-            // 
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(39, 17);
-            this.lblStatus.Text = "Ready";
-            // 
-            // progBar
-            // 
-            this.progBar.Maximum = 15;
-            this.progBar.Name = "progBar";
-            this.progBar.Size = new System.Drawing.Size(100, 16);
-            this.progBar.Step = 1;
-            this.progBar.Visible = false;
+            this.colUrl.DataPropertyName = "Url";
+            this.colUrl.HeaderText = "URL";
+            this.colUrl.Name = "colUrl";
+            this.colUrl.ReadOnly = true;
+            this.colUrl.Visible = false;
             // 
             // frmMain
             // 
@@ -225,6 +237,12 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton btnStart;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ToolStripComboBox cmbTinh;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel lblStatus;
+        private System.Windows.Forms.ToolStripProgressBar progBar;
         private System.Windows.Forms.DataGridViewTextBoxColumn colIdRec;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPosition;
@@ -232,12 +250,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colPlace;
         private System.Windows.Forms.DataGridViewTextBoxColumn colExpiry;
         private System.Windows.Forms.DataGridViewCheckBoxColumn colSave;
-        private System.Windows.Forms.ToolStripComboBox cmbTinh;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel lblStatus;
-        private System.Windows.Forms.ToolStripProgressBar progBar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colUrl;
     }
 }
 
