@@ -12,11 +12,10 @@ namespace Robot
     using System;
     using System.Collections.Generic;
     
-    public partial class Province
+    public partial class Career
     {
-        public int IdPro { get; set; }
+        public int IdCar { get; set; }
         public string Name { get; set; }
-        public string Url { get; set; }
         public string Code { get; set; }
     }
 }

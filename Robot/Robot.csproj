@@ -71,6 +71,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Career.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="frmDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +85,18 @@
     </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCareers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCareers.Designer.cs">
+      <DependentUpon>frmCareers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmProvinces.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProvinces.Designer.cs">
+      <DependentUpon>frmProvinces.cs</DependentUpon>
     </Compile>
     <Compile Include="Model.Context.cs">
       <AutoGen>True</AutoGen>
@@ -111,6 +126,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCareers.resx">
+      <DependentUpon>frmCareers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProvinces.resx">
+      <DependentUpon>frmProvinces.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -161,6 +182,9 @@
   <ItemGroup>
     <None Include="Resources\ic_resultset_next.png" />
     <None Include="Resources\loading.gif" />
+    <None Include="Resources\ic_flag.png" />
+    <None Include="Resources\ic_flag_red.png" />
+    <None Include="Resources\ic_tag_blue_edit.png" />
     <Content Include="RoboData.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

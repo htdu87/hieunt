@@ -23,6 +23,16 @@ namespace Robot
             }
         }
 
+        private void FillCombo()
+        {
+            using (var db = new RoboDataEntities())
+            {
+                List<Province> data = db.Provinces.OrderBy(p => p.IdPro).ToList();
+                cmbTinh.ComboBox.DataSource = new BindingSource(data, null);
+                cmbTinh.ComboBox.DisplayMember = "Name";
+            }
+        }
+
         private void FillForm()
         {
             using (var db = new RoboDataEntities())
@@ -118,6 +128,7 @@ namespace Robot
 
         private void btnStart_Click(object sender, EventArgs e)
         {
+            if (cmbTinh.ComboBox.SelectedValue == null) return;
             string url = ((Province)cmbTinh.ComboBox.SelectedValue).Url;
             new Thread(() => Run(url)).Start();
         }
@@ -151,6 +162,17 @@ namespace Robot
             {
 
             }
+        }
+
+        private void btnProvinces_Click(object sender, EventArgs e)
+        {
+            new frmProvinces().ShowDialog();
+            FillCombo();
+        }
+
+        private void btnCareers_Click(object sender, EventArgs e)
+        {
+            new frmCareers().ShowDialog();
         }
     }
 }

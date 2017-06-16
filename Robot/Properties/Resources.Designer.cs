@@ -63,9 +63,39 @@ namespace Robot.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ic_flag {
+            get {
+                object obj = ResourceManager.GetObject("ic_flag", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_flag_red {
+            get {
+                object obj = ResourceManager.GetObject("ic_flag_red", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ic_resultset_next {
             get {
                 object obj = ResourceManager.GetObject("ic_resultset_next", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_tag_blue_edit {
+            get {
+                object obj = ResourceManager.GetObject("ic_tag_blue_edit", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

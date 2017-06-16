@@ -7,6 +7,7 @@
       <Diagram DiagramId="f2d0b6a78f2649919957f85eb1e7d3f7" Name="Diagram1">
         <EntityTypeShape EntityType="RoboDataModel.Recruitment" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="RoboDataModel.Province" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="RoboDataModel.Career" Width="1.5" PointX="3.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

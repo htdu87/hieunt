@@ -27,5 +27,6 @@ namespace Robot
     
         public virtual DbSet<Recruitment> Recruitments { get; set; }
         public virtual DbSet<Province> Provinces { get; set; }
+        public virtual DbSet<Career> Careers { get; set; }
     }
 }

@@ -5,6 +5,14 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="RoboDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Career">
+          <Key>
+            <PropertyRef Name="IdCar" />
+          </Key>
+          <Property Name="IdCar" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Province">
           <Key>
             <PropertyRef Name="IdPro" />
@@ -12,6 +20,7 @@
           <Property Name="IdPro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
           <Property Name="Url" Type="nvarchar" MaxLength="200" />
+          <Property Name="Code" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="Recruitment">
           <Key>
@@ -28,6 +37,7 @@
           <Property Name="Rodate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityContainer Name="RoboDataModelStoreContainer">
+          <EntitySet Name="Career" EntityType="Self.Career" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Province" EntityType="Self.Province" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Recruitment" EntityType="Self.Recruitment" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
@@ -52,6 +62,7 @@
         <EntityContainer Name="RoboDataEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Recruitments" EntityType="Self.Recruitment" />
           <EntitySet Name="Provinces" EntityType="RoboDataModel.Province" />
+          <EntitySet Name="Careers" EntityType="RoboDataModel.Career" />
         </EntityContainer>
         <EntityType Name="Province">
           <Key>
@@ -60,6 +71,15 @@
           <Property Name="IdPro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Url" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Career">
+          <Key>
+            <PropertyRef Name="IdCar" />
+          </Key>
+          <Property Name="IdCar" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -85,9 +105,19 @@
           <EntitySetMapping Name="Provinces">
             <EntityTypeMapping TypeName="RoboDataModel.Province">
               <MappingFragment StoreEntitySet="Province">
+                <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Url" ColumnName="Url" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="IdPro" ColumnName="IdPro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Careers">
+            <EntityTypeMapping TypeName="RoboDataModel.Career">
+              <MappingFragment StoreEntitySet="Career">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdCar" ColumnName="IdCar" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

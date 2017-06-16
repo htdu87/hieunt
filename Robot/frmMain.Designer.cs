@@ -29,14 +29,10 @@
         private void InitializeComponent()
         {
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.cmbTinh = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.cmbTinh = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
-            this.progBar = new System.Windows.Forms.ToolStripProgressBar();
-            this.btnStart = new System.Windows.Forms.ToolStripButton();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.colIdRec = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,6 +41,12 @@
             this.colExpiry = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSave = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.colUrl = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.progBar = new System.Windows.Forms.ToolStripProgressBar();
+            this.btnStart = new System.Windows.Forms.ToolStripButton();
+            this.btnProvinces = new System.Windows.Forms.ToolStripButton();
+            this.btnCareers = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -56,12 +58,33 @@
             this.toolStripLabel1,
             this.cmbTinh,
             this.toolStripSeparator1,
-            this.btnStart});
+            this.btnStart,
+            this.btnProvinces,
+            this.btnCareers});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(778, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(17, 22);
+            this.toolStripLabel1.Text = "P:";
+            this.toolStripLabel1.ToolTipText = "Province";
+            // 
+            // cmbTinh
+            // 
+            this.cmbTinh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTinh.Name = "cmbTinh";
+            this.cmbTinh.Size = new System.Drawing.Size(121, 25);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // dataGridView1
             // 
@@ -90,60 +113,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(778, 409);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
-            // 
-            // cmbTinh
-            // 
-            this.cmbTinh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTinh.Name = "cmbTinh";
-            this.cmbTinh.Size = new System.Drawing.Size(121, 25);
-            // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(17, 22);
-            this.toolStripLabel1.Text = "P:";
-            this.toolStripLabel1.ToolTipText = "Province";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblStatus,
-            this.progBar});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 434);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(778, 22);
-            this.statusStrip1.TabIndex = 2;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // lblStatus
-            // 
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(39, 17);
-            this.lblStatus.Text = "Ready";
-            // 
-            // progBar
-            // 
-            this.progBar.Maximum = 15;
-            this.progBar.Name = "progBar";
-            this.progBar.Size = new System.Drawing.Size(100, 16);
-            this.progBar.Step = 1;
-            this.progBar.Visible = false;
-            // 
-            // btnStart
-            // 
-            this.btnStart.Enabled = false;
-            this.btnStart.Image = global::Robot.Properties.Resources.ic_resultset_next;
-            this.btnStart.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(51, 22);
-            this.btnStart.Text = "Start";
-            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // colIdRec
             // 
@@ -207,6 +176,61 @@
             this.colUrl.ReadOnly = true;
             this.colUrl.Visible = false;
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblStatus,
+            this.progBar});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 434);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(778, 22);
+            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(39, 17);
+            this.lblStatus.Text = "Ready";
+            // 
+            // progBar
+            // 
+            this.progBar.Maximum = 15;
+            this.progBar.Name = "progBar";
+            this.progBar.Size = new System.Drawing.Size(100, 16);
+            this.progBar.Step = 1;
+            this.progBar.Visible = false;
+            // 
+            // btnStart
+            // 
+            this.btnStart.Enabled = false;
+            this.btnStart.Image = global::Robot.Properties.Resources.ic_resultset_next;
+            this.btnStart.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(51, 22);
+            this.btnStart.Text = "Start";
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            // 
+            // btnProvinces
+            // 
+            this.btnProvinces.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnProvinces.Image = global::Robot.Properties.Resources.ic_flag_red;
+            this.btnProvinces.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnProvinces.Name = "btnProvinces";
+            this.btnProvinces.Size = new System.Drawing.Size(78, 22);
+            this.btnProvinces.Text = "Provinces";
+            this.btnProvinces.Click += new System.EventHandler(this.btnProvinces_Click);
+            // 
+            // btnCareers
+            // 
+            this.btnCareers.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnCareers.Image = global::Robot.Properties.Resources.ic_tag_blue_edit;
+            this.btnCareers.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCareers.Name = "btnCareers";
+            this.btnCareers.Size = new System.Drawing.Size(66, 22);
+            this.btnCareers.Text = "Careers";
+            this.btnCareers.Click += new System.EventHandler(this.btnCareers_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -251,6 +275,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colExpiry;
         private System.Windows.Forms.DataGridViewCheckBoxColumn colSave;
         private System.Windows.Forms.DataGridViewTextBoxColumn colUrl;
+        private System.Windows.Forms.ToolStripButton btnProvinces;
+        private System.Windows.Forms.ToolStripButton btnCareers;
     }
 }
 
