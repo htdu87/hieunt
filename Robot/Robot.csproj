@@ -160,6 +160,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ic_resultset_next.png" />
+    <None Include="Resources\loading.gif" />
     <Content Include="RoboData.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

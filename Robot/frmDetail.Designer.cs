@@ -52,6 +52,8 @@
             this.txtTinh = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
+            this.picLoding = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.picLoding)).BeginInit();
             this.SuspendLayout();
             // 
             // txtTen
@@ -255,6 +257,19 @@
             this.btnOK.TabIndex = 12;
             this.btnOK.Text = "Save";
             this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            // 
+            // picLoding
+            // 
+            this.picLoding.BackColor = System.Drawing.SystemColors.Control;
+            this.picLoding.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picLoding.Image = global::Robot.Properties.Resources.loading;
+            this.picLoding.Location = new System.Drawing.Point(0, 0);
+            this.picLoding.Name = "picLoding";
+            this.picLoding.Size = new System.Drawing.Size(703, 393);
+            this.picLoding.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picLoding.TabIndex = 13;
+            this.picLoding.TabStop = false;
             // 
             // frmDetail
             // 
@@ -263,6 +278,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(703, 393);
+            this.Controls.Add(this.picLoding);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.label11);
@@ -291,9 +307,11 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmDetail";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Recruitment detail";
             this.Load += new System.EventHandler(this.frmDetail_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.picLoding)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -325,5 +343,6 @@
         private System.Windows.Forms.TextBox txtTinh;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnOK;
+        private System.Windows.Forms.PictureBox picLoding;
     }
 }

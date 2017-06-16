@@ -14,8 +14,6 @@ namespace Robot
 {
     public partial class frmMain : Form
     {
-        private Thread thread;
-
         private void FillData()
         {
             using(var db = new RoboDataEntities())
@@ -121,8 +119,7 @@ namespace Robot
         private void btnStart_Click(object sender, EventArgs e)
         {
             string url = ((Province)cmbTinh.ComboBox.SelectedValue).Url;
-            thread = new Thread(() => Run(url));
-            thread.Start();
+            new Thread(() => Run(url)).Start();
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
