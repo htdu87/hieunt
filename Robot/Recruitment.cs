@@ -12,7 +12,7 @@ namespace Robot
     using System;
     using System.Collections.Generic;
     
-    public partial class Recruitment
+    public partial class recruitment
     {
         public int IdRec { get; set; }
         public string Code { get; set; }

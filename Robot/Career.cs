@@ -12,7 +12,7 @@ namespace Robot
     using System;
     using System.Collections.Generic;
     
-    public partial class Career
+    public partial class career
     {
         public int IdCar { get; set; }
         public string Name { get; set; }

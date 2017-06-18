@@ -25,8 +25,8 @@ namespace Robot
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Recruitment> Recruitments { get; set; }
-        public virtual DbSet<Province> Provinces { get; set; }
-        public virtual DbSet<Career> Careers { get; set; }
+        public virtual DbSet<career> careers { get; set; }
+        public virtual DbSet<province> provinces { get; set; }
+        public virtual DbSet<recruitment> recruitments { get; set; }
     }
 }

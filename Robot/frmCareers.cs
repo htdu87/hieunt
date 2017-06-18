@@ -18,7 +18,7 @@ namespace Robot
         {
             using(var db= new RoboDataEntities())
             {
-                List<Career> data = db.Careers.ToList();
+                List<career> data = db.careers.ToList();
                 dataGridView1.DataSource = new BindingSource(data, null);
             }
         }
@@ -49,7 +49,7 @@ namespace Robot
             {
                 if(selId>0)
                 {
-                    Career c = db.Careers.FirstOrDefault(n => n.IdCar == selId);
+                    career c = db.careers.FirstOrDefault(n => n.IdCar == selId);
                     if (c != null)
                     {
                         c.Code = txtCode.Text;
@@ -58,10 +58,10 @@ namespace Robot
                 }
                 else
                 {
-                    Career c = new Career();
+                    career c = new career();
                     c.Code = txtCode.Text;
                     c.Name = txtName.Text;
-                    db.Careers.Add(c);
+                    db.careers.Add(c);
                 }
 
                 if (db.SaveChanges() > 0) FillData();
@@ -93,7 +93,7 @@ namespace Robot
                     int id = (int)dataGridView1.SelectedRows[0].Cells["colIdCar"].Value;
                     using (var db = new RoboDataEntities())
                     {
-                        db.Careers.Remove(db.Careers.FirstOrDefault(c => c.IdCar == id));
+                        db.careers.Remove(db.careers.FirstOrDefault(c => c.IdCar == id));
                         if (db.SaveChanges() > 0)
                         {
                             dataGridView1.Rows.Remove(dataGridView1.SelectedRows[0]);

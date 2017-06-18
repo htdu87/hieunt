@@ -28,10 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.cmbTinh = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnStart = new System.Windows.Forms.ToolStripButton();
+            this.btnProvinces = new System.Windows.Forms.ToolStripButton();
+            this.btnCareers = new System.Windows.Forms.ToolStripButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.colIdRec = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,9 +48,6 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.progBar = new System.Windows.Forms.ToolStripProgressBar();
-            this.btnStart = new System.Windows.Forms.ToolStripButton();
-            this.btnProvinces = new System.Windows.Forms.ToolStripButton();
-            this.btnCareers = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -85,6 +86,36 @@
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnStart
+            // 
+            this.btnStart.Enabled = false;
+            this.btnStart.Image = global::Robot.Properties.Resources.ic_resultset_next;
+            this.btnStart.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(51, 22);
+            this.btnStart.Text = "Start";
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            // 
+            // btnProvinces
+            // 
+            this.btnProvinces.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnProvinces.Image = global::Robot.Properties.Resources.ic_flag_red;
+            this.btnProvinces.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnProvinces.Name = "btnProvinces";
+            this.btnProvinces.Size = new System.Drawing.Size(78, 22);
+            this.btnProvinces.Text = "Provinces";
+            this.btnProvinces.Click += new System.EventHandler(this.btnProvinces_Click);
+            // 
+            // btnCareers
+            // 
+            this.btnCareers.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnCareers.Image = global::Robot.Properties.Resources.ic_tag_blue_edit;
+            this.btnCareers.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCareers.Name = "btnCareers";
+            this.btnCareers.Size = new System.Drawing.Size(66, 22);
+            this.btnCareers.Text = "Careers";
+            this.btnCareers.Click += new System.EventHandler(this.btnCareers_Click);
             // 
             // dataGridView1
             // 
@@ -201,36 +232,6 @@
             this.progBar.Step = 1;
             this.progBar.Visible = false;
             // 
-            // btnStart
-            // 
-            this.btnStart.Enabled = false;
-            this.btnStart.Image = global::Robot.Properties.Resources.ic_resultset_next;
-            this.btnStart.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(51, 22);
-            this.btnStart.Text = "Start";
-            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
-            // 
-            // btnProvinces
-            // 
-            this.btnProvinces.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.btnProvinces.Image = global::Robot.Properties.Resources.ic_flag_red;
-            this.btnProvinces.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnProvinces.Name = "btnProvinces";
-            this.btnProvinces.Size = new System.Drawing.Size(78, 22);
-            this.btnProvinces.Text = "Provinces";
-            this.btnProvinces.Click += new System.EventHandler(this.btnProvinces_Click);
-            // 
-            // btnCareers
-            // 
-            this.btnCareers.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.btnCareers.Image = global::Robot.Properties.Resources.ic_tag_blue_edit;
-            this.btnCareers.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnCareers.Name = "btnCareers";
-            this.btnCareers.Size = new System.Drawing.Size(66, 22);
-            this.btnCareers.Text = "Careers";
-            this.btnCareers.Click += new System.EventHandler(this.btnCareers_Click);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -240,6 +241,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "frmMain";

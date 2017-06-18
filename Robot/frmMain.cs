@@ -18,7 +18,7 @@ namespace Robot
         {
             using(var db = new RoboDataEntities())
             {
-                List<Recruitment> data = db.Recruitments.OrderByDescending(r => r.Rodate).ToList();
+                List<recruitment> data = db.recruitments.OrderByDescending(r => r.Rodate).ToList();
                 dataGridView1.DataSource = new BindingSource(data, null);
             }
         }
@@ -27,7 +27,7 @@ namespace Robot
         {
             using (var db = new RoboDataEntities())
             {
-                List<Province> data = db.Provinces.OrderBy(p => p.IdPro).ToList();
+                List<province> data = db.provinces.OrderBy(p => p.IdPro).ToList();
                 cmbTinh.ComboBox.DataSource = new BindingSource(data, null);
                 cmbTinh.ComboBox.DisplayMember = "Name";
             }
@@ -37,8 +37,20 @@ namespace Robot
         {
             using (var db = new RoboDataEntities())
             {
-                List<Province> dataPro = db.Provinces.OrderBy(p=>p.IdPro).ToList();
-                List<Recruitment> dataRec = db.Recruitments.OrderByDescending(r => r.Rodate).ToList();
+                List<province> dataPro=null;
+                List<recruitment> dataRec=null;
+                try
+                {
+                    dataPro = db.provinces.OrderBy(p => p.IdPro).ToList();
+                    dataRec = db.recruitments.OrderByDescending(r => r.Rodate).ToList();
+                }
+                catch(Exception ex)
+                {
+                    Invoke((MethodInvoker)delegate
+                    {
+                        MessageBox.Show(ex.Message);
+                    });
+                }
 
                 Invoke((MethodInvoker)delegate
                 {
@@ -79,9 +91,9 @@ namespace Robot
                     string salary = node.SelectSingleNode("td[3]").InnerText.Trim();
                     string expiry = node.SelectSingleNode("td[4]").InnerText.Trim();
 
-                    if (db.Recruitments.FirstOrDefault(r => r.Code == code) == null)
+                    if (db.recruitments.FirstOrDefault(r => r.Code == code) == null)
                     {
-                        Recruitment rec = new Recruitment();
+                        recruitment rec = new recruitment();
                         rec.Code = code;
                         rec.Position = position;
                         rec.Salary = salary;
@@ -90,7 +102,7 @@ namespace Robot
                         rec.Url = href;
                         rec.Saved = false;
                         rec.Rodate = DateTime.Now;
-                        db.Recruitments.Add(rec);
+                        db.recruitments.Add(rec);
                     }
                     Invoke((MethodInvoker)delegate
                     {
@@ -129,7 +141,7 @@ namespace Robot
         private void btnStart_Click(object sender, EventArgs e)
         {
             if (cmbTinh.ComboBox.SelectedValue == null) return;
-            string url = ((Province)cmbTinh.ComboBox.SelectedValue).Url;
+            string url = ((province)cmbTinh.ComboBox.SelectedValue).Url;
             new Thread(() => Run(url)).Start();
         }
 
@@ -142,7 +154,7 @@ namespace Robot
                     int id = (int)dataGridView1.SelectedRows[0].Cells["colIdRec"].Value;
                     using(var db = new RoboDataEntities())
                     {
-                        db.Recruitments.Remove(db.Recruitments.FirstOrDefault(r=>r.IdRec==id));
+                        db.recruitments.Remove(db.recruitments.FirstOrDefault(r=>r.IdRec==id));
                         if(db.SaveChanges()>0)
                         {
                             dataGridView1.Rows.Remove(dataGridView1.SelectedRows[0]);

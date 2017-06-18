@@ -18,7 +18,7 @@ namespace Robot
         {
             using(var db= new RoboDataEntities())
             {
-                List<Province> data = db.Provinces.ToList();
+                List<province> data = db.provinces.ToList();
                 dataGridView1.DataSource = new BindingSource(data, null);
             }
         }
@@ -49,7 +49,7 @@ namespace Robot
             {
                 if(selId>0)
                 {
-                    Province p = db.Provinces.FirstOrDefault(n => n.IdPro == selId);
+                    province p = db.provinces.FirstOrDefault(n => n.IdPro == selId);
                     if (p != null)
                     {
                         p.Code = txtCode.Text;
@@ -59,11 +59,11 @@ namespace Robot
                 }
                 else
                 {
-                    Province p = new Province();
+                    province p = new province();
                     p.Code = txtCode.Text;
                     p.Name = txtName.Text;
                     p.Url = txtUrl.Text;
-                    db.Provinces.Add(p);
+                    db.provinces.Add(p);
                 }
 
                 if (db.SaveChanges() > 0) FillData();
@@ -96,7 +96,7 @@ namespace Robot
                     int id = (int)dataGridView1.SelectedRows[0].Cells["colIdPro"].Value;
                     using (var db = new RoboDataEntities())
                     {
-                        db.Provinces.Remove(db.Provinces.FirstOrDefault(p=>p.IdPro == id));
+                        db.provinces.Remove(db.provinces.FirstOrDefault(p=>p.IdPro == id));
                         if (db.SaveChanges() > 0)
                         {
                             dataGridView1.Rows.Remove(dataGridView1.SelectedRows[0]);
