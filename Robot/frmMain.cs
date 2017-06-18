@@ -48,7 +48,7 @@ namespace Robot
                 {
                     Invoke((MethodInvoker)delegate
                     {
-                        MessageBox.Show(ex.Message);
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     });
                 }
 
