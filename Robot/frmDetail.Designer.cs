@@ -53,6 +53,7 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.picLoding = new System.Windows.Forms.PictureBox();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.picLoding)).BeginInit();
             this.SuspendLayout();
             // 
@@ -271,6 +272,13 @@
             this.picLoding.TabIndex = 13;
             this.picLoding.TabStop = false;
             // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.DefaultExt = "sql";
+            this.saveFileDialog1.Filter = "SQL File|*.sql";
+            this.saveFileDialog1.OverwritePrompt = false;
+            this.saveFileDialog1.Title = "Export to file";
+            // 
             // frmDetail
             // 
             this.AcceptButton = this.btnOK;
@@ -345,5 +353,6 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.PictureBox picLoding;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

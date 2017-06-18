@@ -189,6 +189,7 @@
     <None Include="Resources\ic_flag_red.png" />
     <None Include="Resources\ic_tag_blue_edit.png" />
     <None Include="Resources\ic_bug.ico" />
+    <Content Include="dev\bot_data.sql" />
     <Content Include="ic_bug.ico" />
     <Content Include="Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
