@@ -47,7 +47,7 @@ namespace Robot
                     txtYeucau.Text = document.DocumentNode.SelectSingleNode("//article/table[1]/tbody/tr[2]/td[2]").InnerText.Trim();
                     txtQuyenloi.Text = document.DocumentNode.SelectSingleNode("//article/table[1]/tbody/tr[3]/td[2]").InnerText.Trim();
                     txtHannop.Text = document.DocumentNode.SelectSingleNode("//article/table[1]/tbody/tr[4]/td[2]").InnerText.Trim();
-                    txtNophs.Text = "<div><a href=\"https://www.timviecnhanh.com/nguoi-tim-viec/ung-tuyen-cong-viec-new?id=" + code + "\">Nộp hồ sơ tại đây</a></div>";
+                    txtNophs.Text = "<div><a target=\"_blank\" href=\"https://www.timviecnhanh.com/nguoi-tim-viec/ung-tuyen-cong-viec-new?id=" + code + "\">Nộp hồ sơ tại đây</a></div>";
 
                     var nodeEmail = document.DocumentNode.SelectSingleNode("//article/div[contains(@class, 'block-info-company')]/div/table/tr[3]/td[2]/p");
                     if (nodeEmail != null)
