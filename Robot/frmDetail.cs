@@ -32,7 +32,7 @@ namespace Robot
                     string tinh = String.Empty;
                     foreach (HtmlNode node in document.DocumentNode.SelectNodes("//article[contains(@class, 'block-content')]/div[5]/div/ul/li[4]/a"))
                     {
-                        tinh += " " + node.InnerText + ",";
+                        tinh += " " + node.InnerText.Replace("Việc làm ", "") + ",";
                     }
                     txtTinh.Text = tinh.TrimStart().Trim(',');
 
@@ -85,7 +85,7 @@ namespace Robot
             {
                 StreamWriter file = File.AppendText(saveFileDialog1.FileName);
                 string[] dates = txtHannop.Text.Split('-');
-                file.WriteLine("INSERT INTO `tuyen_dung` (`id`, `ten`, `logo`, `dia_chi`, `dien_thoai`, `email`, `tieu_de`, `mo_ta`, `yeu_cau`, `quyen_loi`, `ho_so`, `han_nop`, `ngay`, `vi_tri`, `loai`, `trang_thai`, `luot_xem`, `nganh_nghe`, `tinh`) VALUES (NULL, '"+txtTen.Text+"', NULL, '"+txtDiachi.Text+"', '"+txtSDT.Text+"', '"+txtEmail.Text+"', '"+txtTieude.Text+"', '"+txtMota.Text+"', '"+txtYeucau.Text+"', '"+txtQuyenloi.Text+"', '"+txtNophs.Text+"', '"+dates[2]+"-"+dates[1]+"-"+dates[0]+"', curdate(), '0', '1', '0', '0', '"+txtNganhnghe.Text+"', '"+txtTinh.Text+"');");
+                file.WriteLine("INSERT INTO `tuyen_dung` (`id`, `ten`, `logo`, `dia_chi`, `dien_thoai`, `email`, `tieu_de`, `mo_ta`, `yeu_cau`, `quyen_loi`, `ho_so`, `han_nop`, `ngay`, `vi_tri`, `loai`, `trang_thai`, `luot_xem`, `nganh_nghe`, `tinh`) VALUES (NULL, '"+txtTen.Text+"', NULL, '"+txtDiachi.Text+"', '"+txtSDT.Text+"', '"+txtEmail.Text+"', '"+txtTieude.Text+"', '"+txtMota.Text+"', '"+txtYeucau.Text+"', '"+txtQuyenloi.Text+"', '"+txtNophs.Text+"', '"+dates[2]+"-"+dates[1]+"-"+dates[0]+"', now(), '0', '1', '0', '0', '"+txtNganhnghe.Text+"', '"+txtTinh.Text+"');");
                 string[] careers = txtNganhnghe.Text.Split(',');
                 string[] places = txtTinh.Text.Split(',');
                 using(var db = new RoboDataEntities())
