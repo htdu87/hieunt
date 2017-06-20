@@ -54,6 +54,8 @@
             this.btnOK = new System.Windows.Forms.Button();
             this.picLoding = new System.Windows.Forms.PictureBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.txtNophs = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picLoding)).BeginInit();
             this.SuspendLayout();
             // 
@@ -97,7 +99,7 @@
             this.txtYeucau.Location = new System.Drawing.Point(406, 90);
             this.txtYeucau.Multiline = true;
             this.txtYeucau.Name = "txtYeucau";
-            this.txtYeucau.Size = new System.Drawing.Size(285, 179);
+            this.txtYeucau.Size = new System.Drawing.Size(285, 153);
             this.txtYeucau.TabIndex = 5;
             // 
             // txtMota
@@ -279,6 +281,22 @@
             this.saveFileDialog1.OverwritePrompt = false;
             this.saveFileDialog1.Title = "Export to file";
             // 
+            // txtNophs
+            // 
+            this.txtNophs.Location = new System.Drawing.Point(406, 249);
+            this.txtNophs.Name = "txtNophs";
+            this.txtNophs.Size = new System.Drawing.Size(285, 20);
+            this.txtNophs.TabIndex = 14;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(352, 252);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(45, 13);
+            this.label12.TabIndex = 15;
+            this.label12.Text = "Nộp HS";
+            // 
             // frmDetail
             // 
             this.AcceptButton = this.btnOK;
@@ -287,6 +305,8 @@
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(703, 393);
             this.Controls.Add(this.picLoding);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.txtNophs);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.label11);
@@ -354,5 +374,7 @@
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.PictureBox picLoding;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.TextBox txtNophs;
+        private System.Windows.Forms.Label label12;
     }
 }

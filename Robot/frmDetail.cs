@@ -16,6 +16,7 @@ namespace Robot
     public partial class frmDetail : Form
     {
         private string url;
+        private string code;
 
         private void Run()
         {
@@ -46,6 +47,7 @@ namespace Robot
                     txtYeucau.Text = document.DocumentNode.SelectSingleNode("//article/table[1]/tbody/tr[2]/td[2]").InnerText.Trim();
                     txtQuyenloi.Text = document.DocumentNode.SelectSingleNode("//article/table[1]/tbody/tr[3]/td[2]").InnerText.Trim();
                     txtHannop.Text = document.DocumentNode.SelectSingleNode("//article/table[1]/tbody/tr[4]/td[2]").InnerText.Trim();
+                    txtNophs.Text = "<div><a href=\"https://www.timviecnhanh.com/nguoi-tim-viec/ung-tuyen-cong-viec-new?id=" + code + "\">Nộp hồ sơ tại đây</a></div>";
 
                     var nodeEmail = document.DocumentNode.SelectSingleNode("//article/div[contains(@class, 'block-info-company')]/div/table/tr[3]/td[2]/p");
                     if (nodeEmail != null)
@@ -65,9 +67,10 @@ namespace Robot
             });
         }
 
-        public frmDetail(string url)
+        public frmDetail(string url, string code)
         {
             this.url = url;
+            this.code = code;
             InitializeComponent();
         }
 
@@ -82,7 +85,7 @@ namespace Robot
             {
                 StreamWriter file = File.AppendText(saveFileDialog1.FileName);
                 string[] dates = txtHannop.Text.Split('-');
-                file.WriteLine("INSERT INTO `tuyen_dung` (`id`, `ten`, `logo`, `dia_chi`, `dien_thoai`, `email`, `tieu_de`, `mo_ta`, `yeu_cau`, `quyen_loi`, `ho_so`, `han_nop`, `ngay`, `vi_tri`, `loai`, `trang_thai`, `luot_xem`, `nganh_nghe`, `tinh`) VALUES (NULL, '"+txtTen.Text+"', NULL, '"+txtDiachi.Text+"', '"+txtSDT.Text+"', '"+txtEmail.Text+"', '"+txtTieude.Text+"', '"+txtMota.Text+"', '"+txtYeucau.Text+"', '"+txtQuyenloi.Text+"', '"+String.Empty+"', '"+dates[2]+"-"+dates[1]+"-"+dates[0]+"', curdate(), '0', '1', '0', '0', '"+txtNganhnghe.Text+"', '"+txtTinh.Text+"');");
+                file.WriteLine("INSERT INTO `tuyen_dung` (`id`, `ten`, `logo`, `dia_chi`, `dien_thoai`, `email`, `tieu_de`, `mo_ta`, `yeu_cau`, `quyen_loi`, `ho_so`, `han_nop`, `ngay`, `vi_tri`, `loai`, `trang_thai`, `luot_xem`, `nganh_nghe`, `tinh`) VALUES (NULL, '"+txtTen.Text+"', NULL, '"+txtDiachi.Text+"', '"+txtSDT.Text+"', '"+txtEmail.Text+"', '"+txtTieude.Text+"', '"+txtMota.Text+"', '"+txtYeucau.Text+"', '"+txtQuyenloi.Text+"', '"+txtNophs.Text+"', '"+dates[2]+"-"+dates[1]+"-"+dates[0]+"', curdate(), '0', '1', '0', '0', '"+txtNganhnghe.Text+"', '"+txtTinh.Text+"');");
                 string[] careers = txtNganhnghe.Text.Split(',');
                 string[] places = txtTinh.Text.Split(',');
                 using(var db = new RoboDataEntities())

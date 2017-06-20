@@ -37,6 +37,9 @@
             this.btnProvinces = new System.Windows.Forms.ToolStripButton();
             this.btnCareers = new System.Windows.Forms.ToolStripButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.progBar = new System.Windows.Forms.ToolStripProgressBar();
             this.colIdRec = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,9 +48,6 @@
             this.colExpiry = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSave = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.colUrl = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
-            this.progBar = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -145,6 +145,31 @@
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblStatus,
+            this.progBar});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 434);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(778, 22);
+            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(39, 17);
+            this.lblStatus.Text = "Ready";
+            // 
+            // progBar
+            // 
+            this.progBar.Maximum = 15;
+            this.progBar.Name = "progBar";
+            this.progBar.Size = new System.Drawing.Size(100, 16);
+            this.progBar.Step = 1;
+            this.progBar.Visible = false;
+            // 
             // colIdRec
             // 
             this.colIdRec.DataPropertyName = "IdRec";
@@ -193,7 +218,7 @@
             // 
             // colSave
             // 
-            this.colSave.DataPropertyName = "Save";
+            this.colSave.DataPropertyName = "Saved";
             this.colSave.FillWeight = 30F;
             this.colSave.HeaderText = "Save";
             this.colSave.Name = "colSave";
@@ -206,31 +231,6 @@
             this.colUrl.Name = "colUrl";
             this.colUrl.ReadOnly = true;
             this.colUrl.Visible = false;
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblStatus,
-            this.progBar});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 434);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(778, 22);
-            this.statusStrip1.TabIndex = 2;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // lblStatus
-            // 
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(39, 17);
-            this.lblStatus.Text = "Ready";
-            // 
-            // progBar
-            // 
-            this.progBar.Maximum = 15;
-            this.progBar.Name = "progBar";
-            this.progBar.Size = new System.Drawing.Size(100, 16);
-            this.progBar.Step = 1;
-            this.progBar.Visible = false;
             // 
             // frmMain
             // 
@@ -269,6 +269,8 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel lblStatus;
         private System.Windows.Forms.ToolStripProgressBar progBar;
+        private System.Windows.Forms.ToolStripButton btnProvinces;
+        private System.Windows.Forms.ToolStripButton btnCareers;
         private System.Windows.Forms.DataGridViewTextBoxColumn colIdRec;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPosition;
@@ -277,8 +279,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colExpiry;
         private System.Windows.Forms.DataGridViewCheckBoxColumn colSave;
         private System.Windows.Forms.DataGridViewTextBoxColumn colUrl;
-        private System.Windows.Forms.ToolStripButton btnProvinces;
-        private System.Windows.Forms.ToolStripButton btnCareers;
     }
 }
 

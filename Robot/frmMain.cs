@@ -14,12 +14,25 @@ namespace Robot
 {
     public partial class frmMain : Form
     {
+        private List<String> newRecs;
+
         private void FillData()
         {
             using(var db = new RoboDataEntities())
             {
                 List<recruitment> data = db.recruitments.OrderByDescending(r => r.Rodate).ToList();
                 dataGridView1.DataSource = new BindingSource(data, null);
+                foreach(string code in newRecs)
+                {
+                    foreach(DataGridViewRow row in dataGridView1.Rows)
+                    {
+                        if (code == row.Cells["colCode"].Value.ToString())
+                        {
+                            row.DefaultCellStyle.BackColor = Color.Yellow;
+                            break;
+                        }
+                    }
+                }
             }
         }
 
@@ -66,8 +79,10 @@ namespace Robot
 
         private void Run(string url)
         {
+            newRecs = new List<string>();
             Invoke((MethodInvoker)delegate
             {
+                btnStart.Enabled = false;
                 progBar.Value = 0;
                 progBar.Visible = true;
                 lblStatus.Text = "Getting data...";
@@ -93,6 +108,7 @@ namespace Robot
 
                     if (db.recruitments.FirstOrDefault(r => r.Code == code) == null)
                     {
+                        newRecs.Add(code);
                         recruitment rec = new recruitment();
                         rec.Code = code;
                         rec.Position = position;
@@ -121,6 +137,7 @@ namespace Robot
             
             Invoke((MethodInvoker)delegate
             {
+                btnStart.Enabled = true;
                 progBar.Visible = false;
                 lblStatus.Text = "Ready";
             });
@@ -170,9 +187,19 @@ namespace Robot
         {
             if (e.RowIndex < 0) return;
             string url = dataGridView1.SelectedRows[0].Cells["colUrl"].Value.ToString();
-            if (new frmDetail(url).ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            string code = dataGridView1.SelectedRows[0].Cells["colCode"].Value.ToString();
+            if (new frmDetail(url, code).ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-
+                int id = (int)dataGridView1.SelectedRows[0].Cells["colIdRec"].Value;
+                using(var db = new RoboDataEntities())
+                {
+                    recruitment rec = db.recruitments.FirstOrDefault(r => r.IdRec == id);
+                    if(rec!=null)
+                    {
+                        rec.Saved = true;
+                    }
+                    if (db.SaveChanges() > 0) dataGridView1.SelectedRows[0].Cells["colSave"].Value = true;
+                }
             }
         }
 
