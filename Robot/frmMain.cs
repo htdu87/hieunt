@@ -126,13 +126,20 @@ namespace Robot
                     });
                 }
 
-                if (db.SaveChanges() > 0)
+                try
                 {
-                    Invoke((MethodInvoker)delegate
+                    if (db.SaveChanges() > 0)
                     {
-                        FillData();
-                    });
+                        Invoke((MethodInvoker)delegate
+                        {
+                            FillData();
+                        });
+                    }
+                }catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                
             }
             
             Invoke((MethodInvoker)delegate

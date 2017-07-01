@@ -7,7 +7,7 @@
       <Diagram DiagramId="a099a21f98b44d1087a571b8c9657e7c" Name="Diagram1">
         <EntityTypeShape EntityType="bot_dataModel.career" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="bot_dataModel.province" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="bot_dataModel.recruitment" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="bot_dataModel.recruitment" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
