@@ -14,6 +14,11 @@ Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "RobotSetup", "RobotSetup\Ro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoBot", "AutoBot\AutoBot.csproj", "{17F3DE60-68F7-481D-A2CC-AC43675A199D}"
 EndProject
+Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "AutoBotSetup", "AutoBotSetup\AutoBotSetup.isproj", "{DC248C19-2821-4CAE-86D9-39B5D8656DDD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{17F3DE60-68F7-481D-A2CC-AC43675A199D} = {17F3DE60-68F7-481D-A2CC-AC43675A199D}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CD_ROM|Any CPU = CD_ROM|Any CPU
@@ -63,6 +68,16 @@ Global
 		{17F3DE60-68F7-481D-A2CC-AC43675A199D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{17F3DE60-68F7-481D-A2CC-AC43675A199D}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
 		{17F3DE60-68F7-481D-A2CC-AC43675A199D}.SingleImage|Any CPU.Build.0 = Release|Any CPU
+		{DC248C19-2821-4CAE-86D9-39B5D8656DDD}.CD_ROM|Any CPU.ActiveCfg = CD_ROM
+		{DC248C19-2821-4CAE-86D9-39B5D8656DDD}.CD_ROM|Any CPU.Build.0 = CD_ROM
+		{DC248C19-2821-4CAE-86D9-39B5D8656DDD}.Debug|Any CPU.ActiveCfg = DVD-5
+		{DC248C19-2821-4CAE-86D9-39B5D8656DDD}.Debug|Any CPU.Build.0 = DVD-5
+		{DC248C19-2821-4CAE-86D9-39B5D8656DDD}.DVD-5|Any CPU.ActiveCfg = DVD-5
+		{DC248C19-2821-4CAE-86D9-39B5D8656DDD}.DVD-5|Any CPU.Build.0 = DVD-5
+		{DC248C19-2821-4CAE-86D9-39B5D8656DDD}.Release|Any CPU.ActiveCfg = SingleImage
+		{DC248C19-2821-4CAE-86D9-39B5D8656DDD}.Release|Any CPU.Build.0 = SingleImage
+		{DC248C19-2821-4CAE-86D9-39B5D8656DDD}.SingleImage|Any CPU.ActiveCfg = SingleImage
+		{DC248C19-2821-4CAE-86D9-39B5D8656DDD}.SingleImage|Any CPU.Build.0 = SingleImage
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
