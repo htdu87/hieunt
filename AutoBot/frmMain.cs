@@ -21,72 +21,79 @@ namespace AutoBot
 
         private void Action()
         {
-            int count = 0;
-            using (var db = new hieunt_tdEntities())
+            try
             {
-                Invoke((MethodInvoker)delegate
+                int count = 0;
+                using (var db = new hieunt_tdEntities())
                 {
-                    progressBar1.Value = 0;
-                    btnStart.Enabled = btnStartHide.Enabled = btnSaveStart.Enabled = false;
-                    progressBar1.Maximum = db.provinces.Count();
-                });
-                
-                //List<province> lsProvince = db.provinces.OrderBy(a=>a.IdPro).Skip(0).Take(2).ToList();
-                List<province> lsProvince = db.provinces.ToList();
-                foreach (province p in lsProvince)
-                {
-                    HtmlWeb web = new HtmlWeb();
-                    HtmlAgilityPack.HtmlDocument document = web.Load(p.Url);
-                    foreach (HtmlNode node in document.DocumentNode.SelectNodes("//table[contains(@class, 'table-content')]/tbody/tr"))
-                    {
-                        string href = node.SelectSingleNode("td/a[contains(@class,'item')]").Attributes["href"].Value;
-                        string code = href.Substring(href.LastIndexOf('-') + 1).Replace(".html", "");
-                        string position = node.SelectSingleNode("td/a[contains(@class,'item')]").Attributes["title"].Value;
-                        string[] places = node.SelectSingleNode("td[2]/span").InnerText.Trim().Split('\n');
-                        for (int i = 0; i < places.Length; i++)
-                        {
-                            places[i] = places[i].Trim();
-                        }
-                        string place = String.Join("/", places);
-                        string salary = node.SelectSingleNode("td[3]").InnerText.Trim();
-                        string expiry = node.SelectSingleNode("td[4]").InnerText.Trim();
-
-                        if (db.recruitments.FirstOrDefault(r => r.Code == code) == null)
-                        {
-                            recruitment rec = new recruitment();
-                            rec.Code = code;
-                            rec.Position = position;
-                            rec.Salary = salary;
-                            rec.Place = place;
-                            rec.Expiry = expiry;
-                            rec.Url = href;
-                            rec.Saved = false;
-                            rec.Rodate = DateTime.Now;
-                            db.recruitments.Add(rec);
-                            db.SaveChanges();
-
-                            //insert to database
-                            count += Save(href, db, code);
-                        }
-                    }
                     Invoke((MethodInvoker)delegate
                     {
-                        progressBar1.Value++;
+                        progressBar1.Value = 0;
+                        btnStart.Enabled = btnStartHide.Enabled = btnSaveStart.Enabled = false;
+                        progressBar1.Maximum = db.provinces.Count();
                     });
-                }
-            }
 
-            Invoke((MethodInvoker)delegate
-            {
-                btnStart.Enabled = btnStartHide.Enabled = btnSaveStart.Enabled = true;
-                progressBar1.Value = 0;
-                if (count > 0)
-                {
-                    notifyIcon1.BalloonTipTitle = "Auto Bot";
-                    notifyIcon1.BalloonTipText = "Auto Bot has been inserted " + count + " new record";
-                    notifyIcon1.ShowBalloonTip(2000);
+                    //List<province> lsProvince = db.provinces.OrderBy(a=>a.IdPro).Skip(0).Take(2).ToList();
+                    List<province> lsProvince = db.provinces.ToList();
+                    foreach (province p in lsProvince)
+                    {
+                        HtmlWeb web = new HtmlWeb();
+                        HtmlAgilityPack.HtmlDocument document = web.Load(p.Url);
+                        foreach (HtmlNode node in document.DocumentNode.SelectNodes("//table[contains(@class, 'table-content')]/tbody/tr"))
+                        {
+                            string href = node.SelectSingleNode("td/a[contains(@class,'item')]").Attributes["href"].Value;
+                            string code = href.Substring(href.LastIndexOf('-') + 1).Replace(".html", "");
+                            string position = node.SelectSingleNode("td/a[contains(@class,'item')]").Attributes["title"].Value;
+                            string[] places = node.SelectSingleNode("td[2]/span").InnerText.Trim().Split('\n');
+                            for (int i = 0; i < places.Length; i++)
+                            {
+                                places[i] = places[i].Trim();
+                            }
+                            string place = String.Join("/", places);
+                            string salary = node.SelectSingleNode("td[3]").InnerText.Trim();
+                            string expiry = node.SelectSingleNode("td[4]").InnerText.Trim();
+
+                            if (db.recruitments.FirstOrDefault(r => r.Code == code) == null)
+                            {
+                                recruitment rec = new recruitment();
+                                rec.Code = code;
+                                rec.Position = position;
+                                rec.Salary = salary;
+                                rec.Place = place;
+                                rec.Expiry = expiry;
+                                rec.Url = href;
+                                rec.Saved = false;
+                                rec.Rodate = DateTime.Now;
+                                db.recruitments.Add(rec);
+                                db.SaveChanges();
+
+                                //insert to database
+                                count += Save(href, db, code);
+                            }
+                        }
+                        Invoke((MethodInvoker)delegate
+                        {
+                            progressBar1.Value++;
+                        });
+                    }
                 }
-            });
+
+                Invoke((MethodInvoker)delegate
+                {
+                    btnStart.Enabled = btnStartHide.Enabled = btnSaveStart.Enabled = true;
+                    progressBar1.Value = 0;
+                    if (count > 0)
+                    {
+                        notifyIcon1.BalloonTipTitle = "Auto Bot";
+                        notifyIcon1.BalloonTipText = "Auto Bot has been inserted " + count + " new record";
+                        notifyIcon1.ShowBalloonTip(2000);
+                    }
+                });
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message,e.Source);
+            }
         }
 
         private int Save(String url, hieunt_tdEntities db, string code)
@@ -138,7 +145,7 @@ namespace AutoBot
                     phone = nodePhone.InnerText.Trim();
 
                 string[] dates = hannop.Split('-');
-                db.Database.ExecuteSqlCommand("INSERT INTO `tuyen_dung` (`id`, `ten`, `logo`, `dia_chi`, `dien_thoai`, `email`, `tieu_de`, `mo_ta`, `yeu_cau`, `quyen_loi`, `ho_so`, `han_nop`, `ngay`, `vi_tri`, `loai`, `trang_thai`, `luot_xem`, `nganh_nghe`, `tinh`) VALUES (NULL, '" + ten + "', NULL, '" + diachi + "', '" + phone + "', '" + email + "', '" + tieude + "', '" + mota + "', '" + yeucau + "', '" + quyenloi + "', '" + hannop + "', '" + dates[2] + "-" + dates[1] + "-" + dates[0] + "', now(), '0', '1', '0', '0', '" + nnghe + "', '" + tinh + "');");
+                db.Database.ExecuteSqlCommand("INSERT INTO `tuyen_dung` (`id`, `ten`, `logo`, `dia_chi`, `dien_thoai`, `email`, `tieu_de`, `mo_ta`, `yeu_cau`, `quyen_loi`, `ho_so`, `han_nop`, `ngay`, `vi_tri`, `loai`, `trang_thai`, `luot_xem`, `nganh_nghe`, `tinh`) VALUES (NULL, '" + ten + "', NULL, '" + diachi + "', '" + phone + "', '" + email + "', '" + tieude + "', '" + mota + "', '" + yeucau + "', '" + quyenloi + "', '" + hannop + "', '" + dates[2] + "-" + dates[1] + "-" + dates[0] + "', now(), '0', '1', '1', '0', '" + nnghe + "', '" + tinh + "');");
                 string[] careers = nnghe.Split(',');
                 string[] places = tinh.Split(',');
                     
