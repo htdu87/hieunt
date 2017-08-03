@@ -145,7 +145,7 @@ namespace AutoBot
                     phone = nodePhone.InnerText.Trim();
 
                 string[] dates = hannop.Split('-');
-                db.Database.ExecuteSqlCommand("INSERT INTO `tuyen_dung` (`id`, `ten`, `logo`, `dia_chi`, `dien_thoai`, `email`, `tieu_de`, `mo_ta`, `yeu_cau`, `quyen_loi`, `ho_so`, `han_nop`, `ngay`, `vi_tri`, `loai`, `trang_thai`, `luot_xem`, `nganh_nghe`, `tinh`) VALUES (NULL, '" + ten + "', NULL, '" + diachi + "', '" + phone + "', '" + email + "', '" + tieude + "', '" + mota + "', '" + yeucau + "', '" + quyenloi + "', '" + hannop + "', '" + dates[2] + "-" + dates[1] + "-" + dates[0] + "', now(), '0', '1', '1', '0', '" + nnghe + "', '" + tinh + "');");
+                db.Database.ExecuteSqlCommand("INSERT INTO `tuyen_dung` (`id`, `ten`, `logo`, `dia_chi`, `dien_thoai`, `email`, `tieu_de`, `mo_ta`, `yeu_cau`, `quyen_loi`, `ho_so`, `han_nop`, `ngay`, `vi_tri`, `loai`, `trang_thai`, `luot_xem`, `nganh_nghe`, `tinh`) VALUES (NULL, '" + ten + "', NULL, '" + diachi + "', '" + phone + "', '" + email + "', '" + tieude + "', '" + mota + "', '" + yeucau + "', '" + quyenloi + "', '" + nophs + "', '" + dates[2] + "-" + dates[1] + "-" + dates[0] + "', now(), '0', '1', '1', '0', '" + nnghe + "', '" + tinh + "');");
                 string[] careers = nnghe.Split(',');
                 string[] places = tinh.Split(',');
                     
