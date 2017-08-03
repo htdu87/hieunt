@@ -127,10 +127,16 @@ namespace AutoBot
                 string quyenloi = document.DocumentNode.SelectSingleNode("//article/table[1]/tbody/tr[3]/td[2]").InnerText.Trim();
                 var nHannop = document.DocumentNode.SelectSingleNode("//article/table[1]/tbody/tr[4]/td[2]/b");
                 string hannop = String.Empty;
+                string hoso = String.Empty;
                 if (nHannop == null)
+                {
+                    hoso = document.DocumentNode.SelectSingleNode("//article/table[1]/tbody/tr[4]/td[2]/p").InnerText.Trim();
                     hannop = document.DocumentNode.SelectSingleNode("//article/table[1]/tbody/tr[5]/td[2]").InnerText.Trim();
+                }
                 else
+                {
                     hannop = nHannop.InnerText.Trim();
+                }
                     
                 string nophs = "<div><a target=\"_blank\" href=\"https://www.timviecnhanh.com/nguoi-tim-viec/ung-tuyen-cong-viec-new?id=" + code + "\">Nộp hồ sơ tại đây</a></div>";
 
@@ -138,6 +144,8 @@ namespace AutoBot
                 var nodeEmail = document.DocumentNode.SelectSingleNode("//article/div[contains(@class, 'block-info-company')]/div/table/tr[3]/td[2]/p");
                 if (nodeEmail != null)
                     email = nodeEmail.InnerText.Trim();
+                else
+                    hoso += nophs;
 
                 string phone = String.Empty;
                 var nodePhone = document.DocumentNode.SelectSingleNode("//article/div[contains(@class, 'block-info-company')]/div/table/tr[4]/td[2]/p");
@@ -145,7 +153,7 @@ namespace AutoBot
                     phone = nodePhone.InnerText.Trim();
 
                 string[] dates = hannop.Split('-');
-                db.Database.ExecuteSqlCommand("INSERT INTO `tuyen_dung` (`id`, `ten`, `logo`, `dia_chi`, `dien_thoai`, `email`, `tieu_de`, `mo_ta`, `yeu_cau`, `quyen_loi`, `ho_so`, `han_nop`, `ngay`, `vi_tri`, `loai`, `trang_thai`, `luot_xem`, `nganh_nghe`, `tinh`) VALUES (NULL, '" + ten + "', NULL, '" + diachi + "', '" + phone + "', '" + email + "', '" + tieude + "', '" + mota + "', '" + yeucau + "', '" + quyenloi + "', '" + nophs + "', '" + dates[2] + "-" + dates[1] + "-" + dates[0] + "', now(), '0', '1', '1', '0', '" + nnghe + "', '" + tinh + "');");
+                db.Database.ExecuteSqlCommand("INSERT INTO `tuyen_dung` (`id`, `ten`, `logo`, `dia_chi`, `dien_thoai`, `email`, `tieu_de`, `mo_ta`, `yeu_cau`, `quyen_loi`, `ho_so`, `han_nop`, `ngay`, `vi_tri`, `loai`, `trang_thai`, `luot_xem`, `nganh_nghe`, `tinh`) VALUES (NULL, '" + ten + "', NULL, '" + diachi + "', '" + phone + "', '" + email + "', '" + tieude + "', '" + mota + "', '" + yeucau + "', '" + quyenloi + "', '" + hoso + "', '" + dates[2] + "-" + dates[1] + "-" + dates[0] + "', now(), '0', '1', '1', '0', '" + nnghe + "', '" + tinh + "');");
                 string[] careers = nnghe.Split(',');
                 string[] places = tinh.Split(',');
                     
